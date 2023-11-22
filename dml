@@ -1,0 +1,73 @@
+--creation and insertion of data into table
+CREATE TABLE EMPLOYEE (
+  empId INTEGER PRIMARY KEY,
+  name TEXT NOT NULL,
+  dept TEXT NOT NULL
+);
+
+-- insert
+INSERT INTO EMPLOYEE VALUES (0001, 'Clark', 'Sales');
+INSERT INTO EMPLOYEE VALUES (0002, 'Dave', 'Accounting');
+INSERT INTO EMPLOYEE VALUES (0003, 'Ava', 'Sales');
+
+-- fetch 
+SELECT * FROM EMPLOYEE WHERE dept = 'Sales';
+
+--DML COMMANDS
+--SELECT
+--INSERT
+--UPDATE
+UPDATE EMPLOYEE
+SET name="Davy"
+WHERE name="Dave";
+SELECT * FROM EMPLOYEE
+
+--DELETE
+DELETE FROM EMPLOYEE 
+WHERE name='Ava';
+SELECT * FROM EMPLOYEE
+
+--AGGREGRATE FUNCTIONS
+--1.COUNT
+SELECT COUNT(dept) FROM EMPLOYEE
+WHERE empId<'3';
+
+--2.MIN
+SELECT MIN(empId) FROM EMPLOYEE
+WHERE empId<'3';
+
+--3.MAX
+SELECT MAX(empId) FROM EMPLOYEE
+WHERE empId<'3';
+
+--4.AVG
+SELECT AVG(empId) FROM EMPLOYEE
+WHERE empId<'3';
+
+--5.SUM
+SELECT SUM(empId) FROM EMPLOYEE
+WHERE empId<'3';
+
+
+
+--GROUP BY
+SELECT COUNT(CustomerID),Country FROM Customers
+GROUP BY Country;
+--in the output table we can see the count of each country in alphabetical order of country name
+--or
+SELECT COUNT(CustomerID),Country FROM Customers
+GROUP BY Country
+ORDER BY COUNT(CustomerID);
+--in the output table we can see the count of each country in descending order
+
+--order by
+SELECT * FROM EMPLOYEE
+ORDER BY empId DESC;
+
+--Having    
+--Having was added to sql because the where keyword could not be used with aggregate functions. 
+SELECT COUNT(CustomerID), Country
+FROM Customers
+GROUP BY Country
+HAVING COUNT(CustomerID) > 5;
+--in the output table we can see the count countries >5 
